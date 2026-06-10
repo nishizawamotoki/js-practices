@@ -1,4 +1,4 @@
-for (var n = 1; n <= 20; n++) {
+for (let n = 1; n <= 20; n++) {
   if (n % 15 === 0) {
     console.log("FizzBuzz");
   } else if (n % 3 === 0) {
