@@ -5,8 +5,8 @@ import dayjs from "dayjs";
 const SATURDAY = 6;
 
 const argv = minimist(process.argv.slice(2));
-const year = argv.y || dayjs().year();
-const monthIndex = argv.m ? argv.m - 1 : dayjs().month();
+const year = argv.y !== undefined ? argv.y : dayjs().year();
+const monthIndex = argv.m !== undefined ? argv.m - 1 : dayjs().month();
 
 const targetDate = dayjs(new Date(year, monthIndex, 1));
 const offsetCells = Array.from({ length: targetDate.day() });
