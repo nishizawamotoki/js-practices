@@ -15,11 +15,14 @@ const dateCells = Array.from({ length: targetDate.daysInMonth() }, (_, i) => {
 });
 const callendarCells = [...offsetCells, ...dateCells];
 
-console.log(`      ${monthIndex + 1}月 ${year}      `);
+console.log(`      ${monthIndex + 1}月 ${year}`);
 console.log("日 月 火 水 木 金 土");
 callendarCells.forEach((cell) => {
   process.stdout.write(cell ? cell.date().toString().padStart(2, " ") : "  ");
-  if (cell?.day() === SATURDAY) {
+
+  if (cell?.date() === targetDate.endOf("month").date()) {
+    process.stdout.write("\n");
+  } else if (cell?.day() === SATURDAY) {
     process.stdout.write("\n");
   } else {
     process.stdout.write(" ");
