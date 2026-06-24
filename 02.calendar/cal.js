@@ -8,9 +8,9 @@ const month = argv.m !== undefined ? argv.m - 1 : dayjs().month();
 
 const targetDate = dayjs(new Date(year, month, 1));
 const offsetCells = Array.from({ length: targetDate.day() });
-const dateCells = Array.from({ length: targetDate.daysInMonth() }, (_, i) => {
-  return dayjs(new Date(year, month, i + 1));
-});
+const dateCells = Array.from({ length: targetDate.daysInMonth() }, (_, i) =>
+  dayjs(new Date(year, month, i + 1)),
+);
 const calendarCells = [...offsetCells, ...dateCells];
 
 console.log(`      ${month + 1}月 ${year}`);
