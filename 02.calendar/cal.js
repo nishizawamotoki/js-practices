@@ -4,16 +4,16 @@ import dayjs from "dayjs";
 
 const argv = minimist(process.argv.slice(2));
 const year = argv.y ?? dayjs().year();
-const monthIndex = argv.m !== undefined ? argv.m - 1 : dayjs().month();
+const month = argv.m !== undefined ? argv.m - 1 : dayjs().month();
 
-const targetDate = dayjs(new Date(year, monthIndex, 1));
+const targetDate = dayjs(new Date(year, month, 1));
 const offsetCells = Array.from({ length: targetDate.day() });
 const dateCells = Array.from({ length: targetDate.daysInMonth() }, (_, i) => {
-  return dayjs(new Date(year, monthIndex, ++i));
+  return dayjs(new Date(year, month, ++i));
 });
 const callendarCells = [...offsetCells, ...dateCells];
 
-console.log(`      ${monthIndex + 1}月 ${year}`);
+console.log(`      ${month + 1}月 ${year}`);
 console.log("日 月 火 水 木 金 土");
 callendarCells.forEach((cell) => {
   process.stdout.write(cell ? cell.date().toString().padStart(2, " ") : "  ");
