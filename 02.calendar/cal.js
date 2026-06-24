@@ -3,7 +3,7 @@ import minimist from "minimist";
 import dayjs from "dayjs";
 
 const argv = minimist(process.argv.slice(2));
-const year = argv.y !== undefined ? argv.y : dayjs().year();
+const year = argv.y ?? dayjs().year();
 const monthIndex = argv.m !== undefined ? argv.m - 1 : dayjs().month();
 
 const targetDate = dayjs(new Date(year, monthIndex, 1));
