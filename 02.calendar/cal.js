@@ -2,8 +2,6 @@
 import minimist from "minimist";
 import dayjs from "dayjs";
 
-const SATURDAY = 6;
-
 const argv = minimist(process.argv.slice(2));
 const year = argv.y !== undefined ? argv.y : dayjs().year();
 const monthIndex = argv.m !== undefined ? argv.m - 1 : dayjs().month();
@@ -20,9 +18,11 @@ console.log("日 月 火 水 木 金 土");
 callendarCells.forEach((cell) => {
   process.stdout.write(cell ? cell.date().toString().padStart(2, " ") : "  ");
 
-  if (cell?.date() === targetDate.endOf("month").date()) {
+  const isLastDay = cell?.date() === targetDate.endOf("month").date();
+  const isSaturday = cell?.day() === 6;
+  if (isLastDay) {
     process.stdout.write("\n");
-  } else if (cell?.day() === SATURDAY) {
+  } else if (isSaturday) {
     process.stdout.write("\n");
   } else {
     process.stdout.write(" ");
