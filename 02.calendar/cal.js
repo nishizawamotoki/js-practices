@@ -11,11 +11,11 @@ const offsetCells = Array.from({ length: targetDate.day() });
 const dateCells = Array.from({ length: targetDate.daysInMonth() }, (_, i) => {
   return dayjs(new Date(year, month, ++i));
 });
-const callendarCells = [...offsetCells, ...dateCells];
+const calendarCells = [...offsetCells, ...dateCells];
 
 console.log(`      ${month + 1}月 ${year}`);
 console.log("日 月 火 水 木 金 土");
-callendarCells.forEach((cell) => {
+calendarCells.forEach((cell) => {
   process.stdout.write(cell ? cell.date().toString().padStart(2, " ") : "  ");
 
   const isLastDay = cell?.date() === targetDate.endOf("month").date();
