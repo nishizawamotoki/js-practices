@@ -16,7 +16,7 @@ const calendarCells = [...offsetCells, ...dateCells];
 console.log(`      ${month + 1}月 ${year}`);
 console.log("日 月 火 水 木 金 土");
 calendarCells.forEach((cell) => {
-  process.stdout.write(cell ? cell.date().toString().padStart(2, " ") : "  ");
+  process.stdout.write(cell?.date().toString().padStart(2, " ") ?? "  ");
 
   const isLastDay = cell?.date() === targetDate.endOf("month").date();
   const isSaturday = cell?.day() === 6;
