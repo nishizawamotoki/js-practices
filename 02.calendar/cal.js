@@ -20,9 +20,7 @@ calendarCells.forEach((cell) => {
 
   const isLastDay = cell?.date() === targetDate.endOf("month").date();
   const isSaturday = cell?.day() === 6;
-  if (isLastDay) {
-    process.stdout.write("\n");
-  } else if (isSaturday) {
+  if (isSaturday || isLastDay) {
     process.stdout.write("\n");
   } else {
     process.stdout.write(" ");
