@@ -18,8 +18,8 @@ console.log("日 月 火 水 木 金 土");
 calendarCells.forEach((cell) => {
   process.stdout.write(cell?.date().toString().padStart(2, " ") ?? "  ");
 
-  const isLastDay = cell?.date() === targetDate.endOf("month").date();
   const isSaturday = cell?.day() === 6;
+  const isLastDay = cell?.date() === targetDate.endOf("month").date();
   if (isSaturday || isLastDay) {
     process.stdout.write("\n");
   } else {
