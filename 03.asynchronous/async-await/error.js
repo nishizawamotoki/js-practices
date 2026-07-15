@@ -1,5 +1,5 @@
 import sqlite3 from "sqlite3";
-import { runPromise, allPromise } from "../db/sqlite-promise.js";
+import { runPromise, allPromise, closePromise } from "../db/sqlite-promise.js";
 
 const db = new sqlite3.Database(":memory:");
 
@@ -28,5 +28,5 @@ const db = new sqlite3.Database(":memory:");
   }
 
   await runPromise(db, "DROP TABLE books");
-  db.close();
+  await closePromise(db);
 })();
