@@ -7,13 +7,17 @@ db.run("CREATE TABLE books (id INTEGER PRIMARY KEY, title TEXT)", () => {
     "INSERT INTO dummy_books (title) VALUES (?)",
     "吾輩は猫である",
     function (err) {
-      err
-        ? console.error("データ追加時にエラーが発生しました: " + err)
-        : console.log(`ID:${this.lastID} のデータを追加しました`);
+      if (err) {
+        console.error("データ追加時にエラーが発生しました: " + err);
+      } else {
+        console.log(`ID:${this.lastID} のデータを追加しました`);
+      }
       db.all("SELECT id, dummy_title FROM books", (err, row) => {
-        err
-          ? console.error("データ取得時にエラーが発生しました: " + err)
-          : console.log(row);
+        if (err) {
+          console.error("データ取得時にエラーが発生しました: " + err);
+        } else {
+          console.log(row);
+        }
         db.run("DROP TABLE books", () => {
           db.close();
         });

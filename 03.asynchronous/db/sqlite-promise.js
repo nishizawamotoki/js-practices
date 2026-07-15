@@ -1,7 +1,11 @@
 export function runPromise(db, sql, param) {
   return new Promise((resolve, reject) => {
     db.run(sql, param, function (err) {
-      err ? reject(err) : resolve(this);
+      if (err) {
+        reject(err);
+      } else {
+        resolve(this);
+      }
     });
   });
 }
@@ -9,7 +13,11 @@ export function runPromise(db, sql, param) {
 export function allPromise(db, sql, param) {
   return new Promise((resolve, reject) => {
     db.all(sql, param, (err, rows) => {
-      err ? reject(err) : resolve(rows);
+      if (err) {
+        reject(err);
+      } else {
+        resolve(rows);
+      }
     });
   });
 }
