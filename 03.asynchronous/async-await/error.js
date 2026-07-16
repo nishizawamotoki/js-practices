@@ -13,14 +13,22 @@ try {
   );
   console.log(`id:${lastID} のデータを追加しました`);
 } catch (err) {
-  console.error("データ追加時にエラーが発生しました: " + err);
+  if (err.code === "SQLITE_ERROR") {
+    console.error("データ追加時にエラーが発生しました: " + err);
+  } else {
+    throw err;
+  }
 }
 
 try {
   const rows = await allPromise(db, "SELECT id, dummy_title FROM books");
   console.log(rows);
 } catch (err) {
-  console.error("データ取得時にエラーが発生しました: " + err);
+  if (err.code === "SQLITE_ERROR") {
+    console.error("データ取得時にエラーが発生しました: " + err);
+  } else {
+    throw err;
+  }
 }
 
 await runPromise(db, "DROP TABLE books");
