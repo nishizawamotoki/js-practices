@@ -14,7 +14,7 @@ try {
   console.log(`id:${lastID} のデータを追加しました`);
 } catch (err) {
   if (err.code === "SQLITE_ERROR") {
-    console.error("データ追加時にエラーが発生しました: " + err);
+    console.error(`データ追加時にエラーが発生しました: ${err}`);
   } else {
     throw err;
   }
@@ -25,7 +25,7 @@ try {
   console.log(rows);
 } catch (err) {
   if (err.code === "SQLITE_ERROR") {
-    console.error("データ取得時にエラーが発生しました: " + err);
+    console.error(`データ取得時にエラーが発生しました: ${err}`);
   } else {
     throw err;
   }

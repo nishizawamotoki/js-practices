@@ -8,13 +8,13 @@ db.run("CREATE TABLE books (id INTEGER PRIMARY KEY, title TEXT)", () => {
     "吾輩は猫である",
     function (err) {
       if (err) {
-        console.error("データ追加時にエラーが発生しました: " + err);
+        console.error(`データ追加時にエラーが発生しました: ${err}`);
       } else {
         console.log(`ID:${this.lastID} のデータを追加しました`);
       }
       db.all("SELECT id, dummy_title FROM books", (err, row) => {
         if (err) {
-          console.error("データ取得時にエラーが発生しました: " + err);
+          console.error(`データ取得時にエラーが発生しました: ${err}`);
         } else {
           console.log(row);
         }

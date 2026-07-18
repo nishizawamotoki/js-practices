@@ -15,14 +15,14 @@ runPromise(db, "CREATE TABLE books (id INTEGER PRIMARY KEY, title TEXT)")
     console.log(`id:${lastID} のデータを追加しました`);
   })
   .catch((err) => {
-    console.error("データ追加時にエラーが発生しました: " + err);
+    console.error(`データ追加時にエラーが発生しました: ${err}`);
   })
   .then(() => allPromise(db, "SELECT id, dummy_title FROM books"))
   .then((rows) => {
     console.log(rows);
   })
   .catch((err) => {
-    console.error("データ取得時にエラーが発生しました: " + err);
+    console.error(`データ取得時にエラーが発生しました: ${err}`);
   })
   .then(() => runPromise(db, "DROP TABLE books"))
   .then(() => closePromise(db));
