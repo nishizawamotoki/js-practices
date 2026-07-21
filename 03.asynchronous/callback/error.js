@@ -12,11 +12,11 @@ db.run("CREATE TABLE books (id INTEGER PRIMARY KEY, title TEXT)", () => {
       } else {
         console.log(`ID:${this.lastID} のデータを追加しました`);
       }
-      db.all("SELECT id, dummy_title FROM books", (err, row) => {
+      db.all("SELECT id, dummy_title FROM books", (err, rows) => {
         if (err) {
           console.error(`データ取得時にエラーが発生しました: ${err}`);
         } else {
-          console.log(row);
+          console.log(rows);
         }
         db.run("DROP TABLE books", () => {
           db.close();
